@@ -93,4 +93,16 @@ company.departments.forEach(department => { //Run the function for each departme
 
 
 
+// Task 3: Create a Function to Calculate the Total Salary for All Departments
 
+function calculateCompanySalary (company) { // Initialized function
+    let companyTotalSalary = 0; // Beginning Balance of total salary for the company
+
+    company.departments.forEach(department => {
+        companyTotalSalary += calculateDepartmentSalary(department); // Sum of department salaries
+    });
+        return companyTotalSalary; // Return total company salary
+};
+
+const totalCompanySalary = calculateCompanySalary(company);
+console.log(`The total salary for the entire company is $${totalCompanySalary}`); // Return 
