@@ -4,7 +4,7 @@
 const company = { //Creating a company as an object
     departments : [ // Developing two departments as objects
         {
-            departmentName: 'Marketing', // The marketing department has two employee arrays
+            departmentName: "Finance", // The marketing department has two employee arrays
             employees: [
                 {
                     name: "Mar",
@@ -37,7 +37,7 @@ const company = { //Creating a company as an object
             ]
         },
         {
-            departmentName: "Finance", //Second department is Finance, has two employees
+            departmentName: "Marketing", //Second department is Finance, has two employees
             employees: [
                 {
                     name: "Pilar",
@@ -66,4 +66,31 @@ const company = { //Creating a company as an object
     ]
 }; // End of object
 
-console.log(company)
+console.log(company) // Display object in console
+
+
+
+// Task 2: Create a Recursive Function to Calculate Total Salary for a Department
+
+function calculateDepartmentSalary(department) { // Created a function
+    let totalSalary = 0; // Beginning Balance of total salary
+    
+
+    const calculateEmployeeSalary = (employee) => {
+        totalSalary += employee.salary; // Sum employee's salary
+        employee.subordinates.forEach(calculateEmployeeSalary); // Calculate subordinates' salaries.
+    };
+
+      department.employees.forEach(calculateEmployeeSalary); // In order to repeat this for each employee in a department
+
+      return totalSalary; // Have a return of the sum of all employee's salary in each department.
+};
+
+company.departments.forEach(department => { //Run the function for each department
+    const totalSalary = calculateDepartmentSalary(department);
+    console.log(`The ${department.departmentName} department's total salary value is $${totalSalary}`) // Display in console
+});
+
+
+
+
